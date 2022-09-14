@@ -1,0 +1,25 @@
+datasets:
+  historical:
+    column_mapping:
+      categorical_features:
+       - 'Date'
+      numerical_features:
+        - "'Euro-super 95  (I)1000L'"
+        - ' Gas oil automobile Automotive gas oil Dieselkraftstoff (I)1000L'
+        - ' Gas oil de chauffage Heating gas oil Heizöl (II)1000L'
+        - ' Fuel oil - Schweres Heizöl (III) Soufre t'
+        - ' Fuel oil -Schweres Heizöl (III) Soufre > 1% Sulphur > 1% Schwefel > 1%t'
+        - 'GPL pour moteur LPG motor fuel1000L'
+    data_format:
+      header: true
+      separator: ','
+    monitors:
+      - data_drift
+    reference_file: ./datasets/data.csv
+service:
+  calculation_period_sec: 2
+  min_reference_size: 30
+  moving_reference: false
+  datasets_path: datasets
+  use_reference: true
+  window_size: 5
